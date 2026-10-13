@@ -1,0 +1,28 @@
+---
+name: senior-jobs-curation
+description: Explore senior job needs using this partial static MCP sample, ask grounded follow-up questions, and retrieve only matching lists and selected cached details.
+---
+
+# Senior jobs curation
+
+Use the three tools as evidence providers. The ChatGPT host chooses questions and explains results; the server performs deterministic filtering and returns observed facts. This server makes no AI or upstream requests and does not require an API key.
+
+## Explore, narrow, then read selected details
+
+- For a vague request such as “어떤 일자리가 있어?”, call `describe_search_options` with only the conditions already stated. Use its `conditionState`, `candidateCounts`, `factors`, `nextQuestion` and `suggestedQuestions` to ask one or two useful questions about work region and preferred work. Do not dump the whole list or fetch details before the user narrows the request.
+- Do not repeat a question the user has answered. `anyRegion: true` or `anyWork: true` records an explicit lack of preference. When a condition changes, replace the previous value; remove a prior work keyword if the user says the type of work no longer matters. Keep other conditions the user still wants. The server is stateless: send the current small condition object on every relevant call.
+- When conditions are sufficient, use `search_jobs` with those conditions and a small limit, usually 3. Its distributions describe all confirmed filtered matches before paging. Show the actual title, raw work region, application period, application method and ID, together with the applied conditions and confirmed count. Never silently broaden filters.
+- Call `get_job_details` only for an actual ID from the results that the user selected, or when the user explicitly requested that result's details or contact. Use the raw list fields and cached summary as separate evidence. A place or work pattern appearing only in the title must be labeled as title evidence rather than a structured location, salary or schedule field.
+- Zero confirmed results means zero in this stored partial sample under these conditions. Use `unknown` counts to explain missing field evidence; ask before relaxing a filter. Do not claim there are no jobs nationwide.
+
+## Separate facts, unknowns and judgement
+
+The source snapshot is static and partial: 314 stored listings, one cached detail observation summary, zero full detail documents and 313 jobs with no detail collected. State this scope and the source observation date in result or detail answers. The current KST application period and stored raw “접수중” marker are both checked, but later upstream changes are not fetched.
+
+Every search-result or selected-detail answer must include the returned `answerNotice.text` once as a short source footer. A generic “partial data” sentence does not replace the snapshot date and exact detail coverage. This also applies to zero-result answers. Use `unknownFilterEvidence` to name which requested filter lacks evidence rather than describing every missing field as a mismatch.
+
+`match` and `mismatch` refer only to supplied supported filters. `unknown` means a list field has no usable value. `not_collected` means a detail or unsupported attribute was not collected. Missing information is not a definitive mismatch or an eligibility decision.
+
+Salary, exact working hours, age eligibility, preferences and qualifications have not been collected. Do not fill them in from stereotypes, employment codes or a job title. Raw employment codes are not human-readable employment labels unless a mapping is actually supplied. Offer questions for the recruiting contact when needed. A displayed public telephone is cached information; do not claim current connectivity is verified.
+
+Do not send entire conversations, identity, financial or health information to this server. Send only the non-sensitive work region, job keyword, raw employment code and explicit no-preference flags needed for this service. If sensitive information would need transmission, obtain the user's specific consent first. No extra app, web search or paid API is needed for this workflow.

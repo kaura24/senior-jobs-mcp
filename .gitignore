@@ -1,0 +1,17 @@
+node_modules/
+public/
+.vercel/
+evidence/
+private/
+inputs/
+secrets/
+credentials/
+.env
+.env.*
+*.log
+*.tap
+*.pem
+*.key
+*.p12
+*.pfx
+.DS_Store
