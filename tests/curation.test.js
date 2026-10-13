@@ -53,6 +53,31 @@ test('a missing source place is unknown, a known different place is mismatch', (
   assert.equal(evidence[1].observedSourceValues.find(x => x.sourceField === 'recrtTitle').matched, true);
 });
 
+test('zero confirmed matches with unknown locations explains missing evidence without broadening', () => {
+  const state = curation.conditions({ region: '서울' });
+  const rows = [{ jobId: 'missing', recrtTitle: '서울 업무 안내', workPlc: '010150' }];
+  const result = curation.contract(state, rows, 1, curation.filterCandidates(rows, state), 'search');
+  assert.equal(result.candidateCounts.confirmedAfterFilters, 0);
+  assert.equal(result.candidateCounts.unknownAfterFilters, 1);
+  assert.equal(result.candidateCounts.mismatchAfterFilters, 0);
+  assert.equal(result.conditionState.region, '서울');
+  assert.equal(result.nextAction, 'explain_unknown_candidates');
+  assert.equal(result.nextQuestion.key, 'confirm_missing_fields');
+  assert.match(result.nextQuestion.text, /근무지명.*미기재.*1건/);
+  assert.doesNotMatch(result.nextQuestion.text, /공고가 없습니다|넓혀/);
+  assert.deepEqual(result.uiGuidance.options, []);
+});
+
+test('known different locations produce a real zero in the stored sample', () => {
+  const state = curation.conditions({ region: '서울', anyWork: true });
+  const rows = [{ jobId: 'different', workPlcNm: '부산 중구' }];
+  const result = curation.contract(state, rows, 1, curation.filterCandidates(rows, state), 'search');
+  assert.equal(result.candidateCounts.unknownAfterFilters, 0);
+  assert.equal(result.candidateCounts.mismatchAfterFilters, 1);
+  assert.equal(result.nextAction, 'ask_before_broadening');
+  assert.equal(result.nextQuestion.key, 'broaden');
+});
+
 test('explicit no preference and changed conditions do not retain stale work filters', () => {
   const original = jobs.searchJobs({ region: '전주', keyword: '경비원' }, now);
   const changed = jobs.searchJobs({ region: '원주', keyword: '', anyWork: true, employmentCode: 'CM0103' }, now);
@@ -109,7 +134,7 @@ test('count accounting and raw evidence hold for each real filter combination', 
 
 test('MCP loads the reusable curation instructions and accepts only small condition fields', () => {
   const response = respond({ jsonrpc: '2.0', id: 1, method: 'initialize', params: { protocolVersion: '2025-06-18' } }, now);
-  assert.equal(response.result.serverInfo.version, '1.1.1');
+  assert.equal(response.result.serverInfo.version, require('../package.json').version);
   assert.equal(response.result.instructions, curation.instructions);
   assert.equal(tools.length, 3);
   assert.ok(tools[0].inputSchema.properties.region);

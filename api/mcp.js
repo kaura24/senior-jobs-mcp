@@ -1,6 +1,8 @@
 'use strict';
 
 const { respond, error } = require('../lib/protocol');
+const { withDataset, bundled } = require('../lib/job-context');
+const { productionStore, loadDataset } = require('../lib/blob-store');
 const maximumBodyBytes = 65536;
 
 async function readBody(req) {
@@ -42,6 +44,11 @@ module.exports = async function handler(req, res) {
   let message;
   try { message = await readBody(req); }
   catch (cause) { return send(cause.message === 'Request body too large' ? 413 : 400, error(null, -32700, 'Invalid JSON request')); }
-  const result = respond(message);
+  let dataset = bundled;
+  if (process.env.BLOB_STORE_ID && message.method === 'tools/call') {
+    try { dataset = await loadDataset(await productionStore(), true); }
+    catch { dataset = { ...bundled, refreshState: { ...bundled.refreshState, state: 'storage_unavailable', errorCode: 'STORAGE_UNAVAILABLE' } }; }
+  }
+  const result = withDataset(dataset, () => respond(message));
   return result === null ? send(202) : send(200, result);
 };

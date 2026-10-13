@@ -1,0 +1,7 @@
+{
+  "state": "not_scheduled",
+  "schedulerEnabled": false,
+  "lastAttemptAt": null,
+  "lastSuccessfulAt": null,
+  "errorCode": null
+}

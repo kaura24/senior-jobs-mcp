@@ -2,7 +2,25 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
   "framework": null,
-  "buildCommand": "",
-  "installCommand": "",
-  "functions": { "api/mcp.js": { "maxDuration": 10 } }
+  "buildCommand": "node scripts/verify-server-configuration.js && node scripts/build-static.js",
+  "outputDirectory": "public",
+  "installCommand": "npm ci --ignore-scripts --no-audit --no-fund",
+  "functions": {
+    "api/mcp.js": {
+      "maxDuration": 10
+    },
+    "api/refresh.js": {
+      "maxDuration": 60
+    },
+    "api/refresh-worker.js": {
+      "maxDuration": 60,
+      "experimentalTriggers": [{ "type": "queue/v2beta", "topic": "senior-jobs-refresh" }]
+    }
+  },
+  "crons": [
+    {
+      "path": "/api/refresh",
+      "schedule": "0 21 * * *"
+    }
+  ]
 }

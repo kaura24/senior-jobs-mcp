@@ -8,7 +8,1265 @@
     "cachedDetailSummaries": 1,
     "fullDetailDocuments": 0,
     "jobsWithoutDetail": 313,
-    "archiveRowsServed": 0
+    "archiveRowsServed": 0,
+    "regionHistoryById": {
+      "KJ21062610080016": {
+        "sourceField": "workPlcNm",
+        "rawValue": "전북 전주시 완산구",
+        "workPlc": "010150",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K180522610080006": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기 시흥시",
+        "workPlc": "030290",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJRV002610080001": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경북 청송군",
+        "workPlc": "050210",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJ21162610080001": {
+        "sourceField": "workPlcNm",
+        "rawValue": "강원 강릉시",
+        "workPlc": "020010",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K120412610080001": {
+        "sourceField": "workPlcNm",
+        "rawValue": "대구 달성군",
+        "workPlc": "010040",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K161232610080005": {
+        "sourceField": "workPlcNm",
+        "rawValue": "전북 전주시 덕진구",
+        "workPlc": "130090",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K161132610080007": {
+        "sourceField": "workPlcNm",
+        "rawValue": "전북 전주시 완산구",
+        "workPlc": "130120",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K180032610080027": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기도 화성시 효행구",
+        "workPlc": "030530",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJAF002610080006": {
+        "sourceField": "workPlcNm",
+        "rawValue": "서울 서초구",
+        "workPlc": "010150",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K120122610080018": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기도 화성시 동탄구",
+        "workPlc": "010240",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJAF002610080013": {
+        "sourceField": "workPlcNm",
+        "rawValue": "서울 송파구",
+        "workPlc": "010180",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJBE002610080001": {
+        "sourceField": "workPlcNm",
+        "rawValue": "부산 남구",
+        "workPlc": "010200",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJAM002610080004": {
+        "sourceField": "workPlcNm",
+        "rawValue": "서울 동작구",
+        "workPlc": "010200",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJAH002610080011": {
+        "sourceField": "workPlcNm",
+        "rawValue": "서울 서초구",
+        "workPlc": "030070",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K150012610070136": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기 평택시",
+        "workPlc": "110080",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJKO002610070001": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기 시흥시",
+        "workPlc": "010110",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJLJ002610070004": {
+        "sourceField": "workPlcNm",
+        "rawValue": "강원 원주시",
+        "workPlc": "040100",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJAM002610070005": {
+        "sourceField": "workPlcNm",
+        "rawValue": "서울 동작구",
+        "workPlc": "010130",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJAS002610070010": {
+        "sourceField": "workPlcNm",
+        "rawValue": "서울 송파구",
+        "workPlc": "010160",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K180342610070014": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기 이천시",
+        "workPlc": "030520",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K120032610070056": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기 용인시 수지구",
+        "workPlc": "010010",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K120412610060035": {
+        "sourceField": "workPlcNm",
+        "rawValue": "인천 영종구",
+        "workPlc": "010200",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJ20922610060001": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기 과천시",
+        "workPlc": "030060",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K162222610060001": {
+        "sourceField": "workPlcNm",
+        "rawValue": "전남광주 광양시",
+        "workPlc": "120040",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K162222610060002": {
+        "sourceField": "workPlcNm",
+        "rawValue": "전남광주 광양시",
+        "workPlc": "120040",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K161232610060008": {
+        "sourceField": "workPlcNm",
+        "rawValue": "전북 익산시",
+        "workPlc": "130090",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K152222610060001": {
+        "sourceField": "workPlcNm",
+        "rawValue": "강원 태백시",
+        "workPlc": "020140",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJ20712610060001": {
+        "sourceField": "workPlcNm",
+        "rawValue": "대전 유성구",
+        "workPlc": "080050",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJAF002610060006": {
+        "sourceField": "workPlcNm",
+        "rawValue": "서울 동작구",
+        "workPlc": "010040",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJAT002610060005": {
+        "sourceField": "workPlcNm",
+        "rawValue": "서울 양천구",
+        "workPlc": "110020",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KF10892610060004": {
+        "sourceField": "workPlcNm",
+        "rawValue": "대전 중구",
+        "workPlc": "080050",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K180412610060042": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기 안양시 동안구",
+        "workPlc": "030340",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KF10042610060011": {
+        "sourceField": "workPlcNm",
+        "rawValue": "서울 중랑구",
+        "workPlc": "010220",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K141122610060035": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경북 경주시",
+        "workPlc": "050020",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K150122610060048": {
+        "sourceField": "workPlcNm",
+        "rawValue": "인천 검단구",
+        "workPlc": "110000",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJLJ002610060012": {
+        "sourceField": "workPlcNm",
+        "rawValue": "강원 원주시",
+        "workPlc": "020000",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJLJ002610020006": {
+        "sourceField": "workPlcNm",
+        "rawValue": "강원 원주시",
+        "workPlc": "030520",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJKX002610020001": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기 용인시 기흥구",
+        "workPlc": "010010",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K131212610020003": {
+        "sourceField": "workPlcNm",
+        "rawValue": "울산 남구",
+        "workPlc": "100010",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K180412610020005": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기 군포시",
+        "workPlc": "030100",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K162122610020004": {
+        "sourceField": "workPlcNm",
+        "rawValue": "전남광주 목포시",
+        "workPlc": "120080",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K130112610020037": {
+        "sourceField": "workPlcNm",
+        "rawValue": "부산 금정구",
+        "workPlc": "090020",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KEC0682610020001": {
+        "sourceField": "workPlcNm",
+        "rawValue": "서울 구로구",
+        "workPlc": "010200",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJKF002610020003": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기 광주시",
+        "workPlc": "010020",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJK6002610020022": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기도 화성시 동탄구",
+        "workPlc": "010040",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K180222610010060": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기 파주시",
+        "workPlc": "030490",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K152412610010003": {
+        "sourceField": "workPlcNm",
+        "rawValue": "강원 원주시",
+        "workPlc": "020090",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJAJ002610010001": {
+        "sourceField": "workPlcNm",
+        "rawValue": "서울 강북구",
+        "workPlc": "010070",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJKV002610010002": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기 연천군",
+        "workPlc": "030370",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJKH002610010003": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기 군포시",
+        "workPlc": "030340",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K163012610010016": {
+        "sourceField": "workPlcNm",
+        "rawValue": "제주 제주시",
+        "workPlc": "140020",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K120612610010027": {
+        "sourceField": "workPlcNm",
+        "rawValue": "서울 관악구",
+        "workPlc": "010050",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJ20522610010010": {
+        "sourceField": "workPlcNm",
+        "rawValue": "대구 북구",
+        "workPlc": "070040",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K161232610010032": {
+        "sourceField": "workPlcNm",
+        "rawValue": "전북 익산시",
+        "workPlc": "130090",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K120412609300002": {
+        "sourceField": "workPlcNm",
+        "rawValue": "서울 강서구",
+        "workPlc": "010040",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJAJ002609300001": {
+        "sourceField": "workPlcNm",
+        "rawValue": "서울 노원구",
+        "workPlc": "110020",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJAR002609300002": {
+        "sourceField": "workPlcNm",
+        "rawValue": "서울 성북구",
+        "workPlc": "010200",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJKX002609300011": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기 용인시 수지구",
+        "workPlc": "030340",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K131612609300018": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경북 경주시",
+        "workPlc": "100030",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJKE002609300006": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기 광명시",
+        "workPlc": "030340",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KEC0042609300005": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기 남양주시",
+        "workPlc": "010040",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K161232609300022": {
+        "sourceField": "workPlcNm",
+        "rawValue": "전북 익산시",
+        "workPlc": "130090",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJ21062609300015": {
+        "sourceField": "workPlcNm",
+        "rawValue": "서울 은평구",
+        "workPlc": "010150",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJ21062609300017": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기 안양시 동안구",
+        "workPlc": "030340",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJ21062609300018": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기 안양시 동안구",
+        "workPlc": "030340",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJ21062609300019": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기 안양시 동안구",
+        "workPlc": "030340",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K140022609300021": {
+        "sourceField": "workPlcNm",
+        "rawValue": "대구 남구",
+        "workPlc": "070010",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K120412609290035": {
+        "sourceField": "workPlcNm",
+        "rawValue": "부산 강서구",
+        "workPlc": "010040",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJSB002609290001": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경남 거제시",
+        "workPlc": "040010",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJSB002609290003": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경남 거제시",
+        "workPlc": "040010",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJDD002609290001": {
+        "sourceField": "workPlcNm",
+        "rawValue": "인천 미추홀구",
+        "workPlc": "010170",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K180522609290048": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기 시흥시",
+        "workPlc": "030290",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJEC002609290001": {
+        "sourceField": "workPlcNm",
+        "rawValue": "전남광주 남구",
+        "workPlc": "110000",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJ21012609290012": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기 성남시 분당구",
+        "workPlc": "010170",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KF11172609290008": {
+        "sourceField": "workPlcNm",
+        "rawValue": "전북 진안군",
+        "workPlc": "130160",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJKO002609290022": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기 시흥시",
+        "workPlc": "030530",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJAV002609280010": {
+        "sourceField": "workPlcNm",
+        "rawValue": "서울 용산구",
+        "workPlc": "010200",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJ20282609280007": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경남 창원시 진해구",
+        "workPlc": "090160",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K130042609280070": {
+        "sourceField": "workPlcNm",
+        "rawValue": "부산 중구",
+        "workPlc": "090150",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJAN002609280008": {
+        "sourceField": "workPlcNm",
+        "rawValue": "서울 마포구",
+        "workPlc": "010200",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K120612609280083": {
+        "sourceField": "workPlcNm",
+        "rawValue": "서울 관악구",
+        "workPlc": "010050",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K120512609280010": {
+        "sourceField": "workPlcNm",
+        "rawValue": "서울 노원구",
+        "workPlc": "010090",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJKQ002609280002": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기 안성시",
+        "workPlc": "010200",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K141112609280026": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경북 포항시 북구",
+        "workPlc": "050230",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KF11252609280002": {
+        "sourceField": "workPlcNm",
+        "rawValue": "충북 청주시 서원구",
+        "workPlc": "010150",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K152322609280006": {
+        "sourceField": "workPlcNm",
+        "rawValue": "강원 속초시",
+        "workPlc": "020050",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K120422609280022": {
+        "sourceField": "workPlcNm",
+        "rawValue": "부산 부산진구",
+        "workPlc": "010200",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KF11172609230004": {
+        "sourceField": "workPlcNm",
+        "rawValue": "전북 진안군",
+        "workPlc": "130160",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJDK002609230001": {
+        "sourceField": "workPlcNm",
+        "rawValue": "인천 영종구",
+        "workPlc": "110040",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K120032609230025": {
+        "sourceField": "workPlcNm",
+        "rawValue": "전북 익산시",
+        "workPlc": "010010",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KEC0042609220005": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기 안성시",
+        "workPlc": "010040",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJNL002609220001": {
+        "sourceField": "workPlcNm",
+        "rawValue": "충남 예산군",
+        "workPlc": "150120",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJNL002609220002": {
+        "sourceField": "workPlcNm",
+        "rawValue": "충남 예산군",
+        "workPlc": "150120",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJAK002609220005": {
+        "sourceField": "workPlcNm",
+        "rawValue": "서울 강북구",
+        "workPlc": "010030",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJKF002609220002": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기 광주시",
+        "workPlc": "060000",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K180342609220003": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기 하남시",
+        "workPlc": "030520",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJKO002609220012": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기 시흥시",
+        "workPlc": "030290",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K180222609210004": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기 파주시",
+        "workPlc": "030490",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KEC0272609210001": {
+        "sourceField": "workPlcNm",
+        "rawValue": "강원 원주시",
+        "workPlc": "040100",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJAU002609210006": {
+        "sourceField": "workPlcNm",
+        "rawValue": "서울 성동구",
+        "workPlc": "010070",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K120232609210006": {
+        "sourceField": "workPlcNm",
+        "rawValue": "서울 송파구",
+        "workPlc": "010180",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJAQ002609210005": {
+        "sourceField": "workPlcNm",
+        "rawValue": "서울 성동구",
+        "workPlc": "010010",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJDG002609180001": {
+        "sourceField": "workPlcNm",
+        "rawValue": "인천 부평구",
+        "workPlc": "110060",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJ21012609180020": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기 성남시 수정구",
+        "workPlc": "010200",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KEC0042609180002": {
+        "sourceField": "workPlcNm",
+        "rawValue": "인천 서해구",
+        "workPlc": "010040",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K180012609180039": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기도 화성시 동탄구",
+        "workPlc": "030530",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJ21062609180011": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기 수원시 영통구",
+        "workPlc": "030340",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJ21062609170005": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기 안양시 동안구",
+        "workPlc": "010200",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K170052609170022": {
+        "sourceField": "workPlcNm",
+        "rawValue": "대전 중구",
+        "workPlc": "080050",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KEC0272609170009": {
+        "sourceField": "workPlcNm",
+        "rawValue": "강원 원주시",
+        "workPlc": "020090",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJAU002609160005": {
+        "sourceField": "workPlcNm",
+        "rawValue": "서울 영등포구",
+        "workPlc": "010020",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K120122609160022": {
+        "sourceField": "workPlcNm",
+        "rawValue": "서울 서초구",
+        "workPlc": "010110",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K120612609160040": {
+        "sourceField": "workPlcNm",
+        "rawValue": "서울 종로구",
+        "workPlc": "010120",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJK3002609150005": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기 평택시",
+        "workPlc": "030520",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJDC002609150001": {
+        "sourceField": "workPlcNm",
+        "rawValue": "인천 서해구",
+        "workPlc": "030340",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJLJ002609150002": {
+        "sourceField": "workPlcNm",
+        "rawValue": "강원 원주시",
+        "workPlc": "010070",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJKO002609150003": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기 시흥시",
+        "workPlc": "110040",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJK6002609150004": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기도 화성시 동탄구",
+        "workPlc": "030340",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJKX002609150002": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기 용인시 수지구",
+        "workPlc": "030530",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJ20542609150001": {
+        "sourceField": "workPlcNm",
+        "rawValue": "인천 남동구",
+        "workPlc": "110040",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJPN002609150022": {
+        "sourceField": "workPlcNm",
+        "rawValue": "전북 정읍시",
+        "workPlc": "130150",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJAG002609140004": {
+        "sourceField": "workPlcNm",
+        "rawValue": "서울 강남구",
+        "workPlc": "010060",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KF11982609140001": {
+        "sourceField": "workPlcNm",
+        "rawValue": "울산 울주군",
+        "workPlc": "100040",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K171182609140005": {
+        "sourceField": "workPlcNm",
+        "rawValue": "충북 영동군",
+        "workPlc": "160040",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K131332609110008": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경남 양산시",
+        "workPlc": "040100",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KF11242609110001": {
+        "sourceField": "workPlcNm",
+        "rawValue": "충북 단양군",
+        "workPlc": "010010",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJK3002609110001": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기 평택시",
+        "workPlc": "010040",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KF11242609100002": {
+        "sourceField": "workPlcNm",
+        "rawValue": "충북 단양군",
+        "workPlc": "010010",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K140142609090017": {
+        "sourceField": "workPlcNm",
+        "rawValue": "대구 북구",
+        "workPlc": "070050",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K120572609090006": {
+        "sourceField": "workPlcNm",
+        "rawValue": "서울 강북구",
+        "workPlc": "010030",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJ21652609080009": {
+        "sourceField": "workPlcNm",
+        "rawValue": "전북 김제시",
+        "workPlc": "010040",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K152122609080007": {
+        "sourceField": "workPlcNm",
+        "rawValue": "충북 음성군",
+        "workPlc": "020130",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJ20832609080004": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기 이천시",
+        "workPlc": "030480",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJ21652609080008": {
+        "sourceField": "workPlcNm",
+        "rawValue": "전북 김제시",
+        "workPlc": "010040",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K120232609040002": {
+        "sourceField": "workPlcNm",
+        "rawValue": "서울 강동구",
+        "workPlc": "010020",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJMH002609040002": {
+        "sourceField": "workPlcNm",
+        "rawValue": "충북 제천시",
+        "workPlc": "160070",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K170052609040025": {
+        "sourceField": "workPlcNm",
+        "rawValue": "대전 대덕구",
+        "workPlc": "080010",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJSI002609020002": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경남 사천시",
+        "workPlc": "020090",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K161132609020029": {
+        "sourceField": "workPlcNm",
+        "rawValue": "전북 전주시 덕진구",
+        "workPlc": "130120",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJ20832609010004": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기 이천시",
+        "workPlc": "030480",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJMG002608280002": {
+        "sourceField": "workPlcNm",
+        "rawValue": "충북 음성군",
+        "workPlc": "020090",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJMG002608280003": {
+        "sourceField": "workPlcNm",
+        "rawValue": "충북 음성군",
+        "workPlc": "020090",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K180312608260009": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기 고양시 일산동구",
+        "workPlc": "030200",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K141412608260006": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경북 안동시",
+        "workPlc": "050110",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K120422608240041": {
+        "sourceField": "workPlcNm",
+        "rawValue": "강원 강릉시",
+        "workPlc": "010200",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K151232608240003": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기 부천시 원미구",
+        "workPlc": "030140",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K120572608240005": {
+        "sourceField": "workPlcNm",
+        "rawValue": "서울 강북구",
+        "workPlc": "010030",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K180132608240051": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경기 남양주시",
+        "workPlc": "030370",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KF11242608200001": {
+        "sourceField": "workPlcNm",
+        "rawValue": "충북 단양군",
+        "workPlc": "010010",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K160042608200009": {
+        "sourceField": "workPlcNm",
+        "rawValue": "전남광주 함평군",
+        "workPlc": "120200",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K152122608200021": {
+        "sourceField": "workPlcNm",
+        "rawValue": "충북 음성군",
+        "workPlc": "020130",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K161142608200003": {
+        "sourceField": "workPlcNm",
+        "rawValue": "전북 남원시",
+        "workPlc": "130040",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K120422608200055": {
+        "sourceField": "workPlcNm",
+        "rawValue": "서울 영등포구",
+        "workPlc": "010200",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KEC0962608190001": {
+        "sourceField": "workPlcNm",
+        "rawValue": "인천 서해구",
+        "workPlc": "110000",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KEC0042608190004": {
+        "sourceField": "workPlcNm",
+        "rawValue": "경남 함안군",
+        "workPlc": "010040",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "K171182608180008": {
+        "sourceField": "workPlcNm",
+        "rawValue": "충북 옥천군",
+        "workPlc": "160050",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      },
+      "KJAP002608130009": {
+        "sourceField": "workPlcNm",
+        "rawValue": "서울 서초구",
+        "workPlc": "030020",
+        "observedAt": "2026-10-12T01:10:10.923889+09:00",
+        "source": "stored_source_list_checkpoint",
+        "checkpointSha256": "f2edc2c340b9b47db93b5c02b70c7b7dffa6ef4e8fb76e5893557d98b9e27b9e"
+      }
+    }
   },
   "jobs": [
     {
