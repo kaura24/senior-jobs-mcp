@@ -24,9 +24,11 @@ MCP는 인증 없이 JSON-RPC POST를 받습니다. 일반 GET이나 SSE 연결�
 
 ## 자동갱신
 
+사용자 요청으로 운영 갱신을 중지했습니다. 예약 Cron은 제거되었고 갱신 시작·비공개 Queue 청크·후속 발행·재시도는 작업 없이 종료합니다. 기존 저장 공고 조회는 유지하며 응답에 `paused_by_request`, `schedulerEnabled: false`를 표시합니다. 자동으로 재개하지 않습니다. 이전 배포의 큐 잔여 실행 확인 범위는 [운영 문서](docs/OPERATIONS.md)를 참고하세요.
+
 기존 대상 ID를 우선 재검증하고 신규 탐색은 별도 커서로 진행합니다. 시간 제한 청크·checkpoint·실패 재개·Private Blob snapshot 게시·비공개 Queue 전달을 사용합니다. 실패 시 이전 snapshot을 유지합니다. 반복 페이지와 미확인 누락 구간을 기록하며 전국 고유 공고 수집 완료를 주장하지 않습니다.
 
-Cron은 `/api/refresh`, UTC `0 21 * * *`입니다. 기존 Hobby 일정은 KST 06:00–06:59 실행 창으로 해석합니다. 조회 경로와 달리 갱신 경로는 서버의 기존 `CRON_SECRET` 인증을 요구합니다.
+중지 전 Cron은 `/api/refresh`, UTC `0 21 * * *`였습니다. 조회 경로와 달리 갱신 경로는 서버의 기존 `CRON_SECRET` 인증을 계속 요구합니다.
 
 ## 실행과 테스트
 
@@ -37,7 +39,7 @@ npm ci --ignore-scripts --no-audit --no-fund
 npm test
 ```
 
-운영과 같은 소스의 로컬 테스트 125개가 통과했습니다. 이 명령은 운영 secret을 내려받거나 원천 전체 수집을 실행하지 않습니다. 배포 설정·운영 범위는 [운영 문서](docs/OPERATIONS.md), 소스 보존 방식은 [Git 이력](docs/HISTORY.md)을 참고하세요.
+운영과 같은 소스의 로컬 테스트 132개가 Node 24.21.0에서 통과했습니다. 이 명령은 운영 secret을 내려받거나 원천 전체 수집을 실행하지 않습니다. 배포 설정·운영 범위는 [운영 문서](docs/OPERATIONS.md), 소스 보존 방식은 [Git 이력](docs/HISTORY.md)을 참고하세요.
 
 ## 데이터와 비밀 파일
 

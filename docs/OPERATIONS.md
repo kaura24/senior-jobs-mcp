@@ -1,5 +1,20 @@
 # 운영
 
+## 중지 배포 검증
+
+- 런타임 커밋: `bff9f7dd74df316b714154fd68c9cfd83aabcfa2`
+- Production 배포: `dpl_85TVqcKd7pBjbHzVKBp7xX7Bgng5`, READY
+- 배포 URL: `https://senior-jobs-poc-eruopfe5u-kaura24-7661s-projects.vercel.app`
+- 운영 alias: `https://senior-jobs-poc-mcp.vercel.app/api/mcp`, 위 배포로 전환 확인
+- Production 소스 29개 파일은 검증한 런타임 커밋의 SHA-1과 모두 일치합니다. `crons: []` 및 기존 Private Queue trigger를 확인했습니다.
+- Node 24.21.0: 테스트 132개 통과. 인증된 중지 GET·POST, 저장소/원천 생성 전 청크 반환, Queue 콜백 정상 반환, enqueue·재시도 승인, 관찰시각 보존을 가짜 의존성으로 검증했습니다. 실제 인증된 갱신 호출이나 새 운영 큐 메시지는 보내지 않았습니다.
+- 추가 offline 검증: 실제 `@vercel/queue` 0.8.0 SDK와 운영 worker 코드를 사용하고 네트워크를 실패하도록 막은 상태에서 오늘·지난 날짜·잘못된 날짜 메시지 3개가 HTTP 200으로 끝나고 SDK가 각각 승인했습니다. 네트워크 호출은 0회입니다.
+- 2026-10-14 10:59:47 UTC 운영 검증: initialize·tools/list·조회 3개 도구 HTTP 200, Private Blob 공고 318건, `paused_by_request`, `schedulerEnabled: false`.
+- 배포 전후 관찰시각 `2026-10-13T23:16:51.646Z`, 기존 기준일 `2026-10-14` KST, 공고 수·샘플 digest·원천 호출 누적수·마지막 시도/성공은 모두 동일합니다. 기준일은 이번 중지 작업에서 갱신하지 않았습니다.
+- 인증 없는 `/api/refresh`는 이전과 동일하게 HTTP 401입니다. 비밀 값·인증·보호 설정·데이터를 변경하지 않았습니다.
+- 10:05–11:00 UTC 대상 프로젝트 갱신 로그와 이전 운영 배포 로그에 기록이 없고 최근 30분 runtime error가 없습니다. 이는 큐 빈 상태의 증거가 아닙니다. 조회된 최신 체크포인트는 중지 전 `completed_with_discovery_gaps`, phase `done`이지만 이전 배포의 큐 잔여 메시지·실행 전체는 미확인입니다.
+- 큐 지표 확인은 Observability schema API 404 및 Vercel CLI의 대상 팀 접근 권한 오류로 막혔습니다. 이전 배포를 삭제하거나 프로젝트 전체를 pause하지 않았습니다.
+
 ## 중지 전 운영 기준선
 
 - Vercel 프로젝트: `senior-jobs-poc-mcp`
