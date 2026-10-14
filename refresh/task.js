@@ -5,8 +5,14 @@ const { createSource } = require('./source');
 const { errorCode } = require('./runner');
 const { enqueue, retryable } = require('../lib/refresh-queue');
 const { kstDay } = require('../lib/jobs');
+const { isRefreshPaused, pausedResult } = require('../lib/refresh-policy');
 async function executeChunk(day, { storeFactory = productionStore, chunk = runDailyChunk,
-  sourceFactory = createSource, dispatch = enqueue, log = event => console.log(JSON.stringify(event)) } = {}) {
+  sourceFactory = createSource, dispatch = enqueue, log = event => console.log(JSON.stringify(event)),
+  isPaused = isRefreshPaused } = {}) {
+  if (isPaused()) {
+    log({ event: 'refresh_paused', state: 'paused_by_request' });
+    return pausedResult();
+  }
   if (day !== kstDay(new Date())) return { state: 'stale_delivery_ignored' };
   let store, phase = 'store';
   const started = Date.now();
@@ -25,12 +31,14 @@ async function executeChunk(day, { storeFactory = productionStore, chunk = runDa
       return result;
     }
     phase = 'continuation';
+    if (isPaused()) return pausedResult();
     const continuationStarted = Date.now();
     await dispatch(kstDay(new Date()), result.progress);
     log({ event: 'refresh_continuation', delivery: 'private_queue', state: 'queued',
       elapsedMs: Date.now() - continuationStarted, completionVerified: false });
     return result;
   } catch (cause) {
+    if (isPaused()) return pausedResult();
     const code = phase === 'continuation' ? 'QUEUE_DISPATCH_FAILED' : errorCode(cause);
     log({ event: 'refresh_task_failed', phase, errorCode: code, elapsedMs: Date.now() - started });
     if (store) try {

@@ -17,10 +17,5 @@
       "experimentalTriggers": [{ "type": "queue/v2beta", "topic": "senior-jobs-refresh" }]
     }
   },
-  "crons": [
-    {
-      "path": "/api/refresh",
-      "schedule": "0 21 * * *"
-    }
-  ]
+  "crons": []
 }

@@ -3,6 +3,7 @@ const crypto = require('node:crypto');
 const { productionStore } = require('../lib/blob-store');
 const { enqueue } = require('../lib/refresh-queue');
 const { kstDay } = require('../lib/jobs');
+const { isRefreshPaused, pausedResult } = require('../lib/refresh-policy');
 function authorized(header, secret) {
   if (!secret || typeof header !== 'string') return false;
   const expected = Buffer.from('Bearer ' + secret), actual = Buffer.from(header);
@@ -15,6 +16,7 @@ module.exports = async function handler(req, res) {
   const send = (status, body) => { res.statusCode = status; res.end(JSON.stringify(body)); };
   if (!['GET', 'POST'].includes(req.method)) return send(405, { errorCode: 'METHOD_NOT_ALLOWED' });
   if (!authorized(req.headers.authorization, process.env.CRON_SECRET)) return send(401, { errorCode: 'UNAUTHORIZED' });
+  if (isRefreshPaused()) return send(200, pausedResult());
   if (!process.env.BLOB_STORE_ID || !process.env.DATA_GO_KR_SERVICE_KEY) return send(503, { errorCode: 'SERVER_CONFIGURATION_REQUIRED' });
   const day = kstDay(new Date());
   if (req.method === 'POST' && req.headers['x-refresh-run-day'] !== day) return send(409, { errorCode: 'STALE_CONTINUATION' });

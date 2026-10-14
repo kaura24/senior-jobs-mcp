@@ -307,7 +307,8 @@ test('published existing-ID success keeps its evidence and time when later disco
   const dataset = await loadDataset(s.store, true, s.now);
   const response = withDataset(dataset, () => jobs.describeOptions({}, s.now()));
   assert.deepEqual(response.context.statusRevalidation.existingIdsRevalidation, scope);
-  assert.equal(response.context.statusRevalidation.state, 'completed_with_discovery_gaps');
+  assert.equal(response.context.statusRevalidation.state, 'paused_by_request');
+  assert.equal(response.context.statusRevalidation.refreshObservedState, 'completed_with_discovery_gaps');
   assert.equal(response.context.statusRevalidation.lastSuccessfulAt, null);
   assert.equal(response.context.sourceFreshness, 'source_revalidated_snapshot');
 });

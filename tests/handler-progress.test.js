@@ -12,7 +12,7 @@ test('a failed authenticated queue dispatch records the failure while preserving
       require: name => ({ 'node:crypto': require('node:crypto'),
         '../lib/blob-store': { productionStore: async () => store },
         '../lib/refresh-queue': { enqueue: async () => { dispatchCalls++; throw new Error('fake-secret'); } },
-        '../lib/jobs': { kstDay: () => '2026-10-12' } }[name]) };
+        '../lib/jobs': { kstDay: () => '2026-10-12' }, '../lib/refresh-policy': { isRefreshPaused: () => false } }[name]) };
     vm.runInNewContext(fs.readFileSync(require.resolve('../api/refresh'), 'utf8'), sandbox);
     let response;
     const res = { setHeader() {}, end(body) { response = JSON.parse(body); } };
