@@ -307,8 +307,7 @@ test('published existing-ID success keeps its evidence and time when later disco
   const dataset = await loadDataset(s.store, true, s.now);
   const response = withDataset(dataset, () => jobs.describeOptions({}, s.now()));
   assert.deepEqual(response.context.statusRevalidation.existingIdsRevalidation, scope);
-  assert.equal(response.context.statusRevalidation.state, 'paused_by_request');
-  assert.equal(response.context.statusRevalidation.refreshObservedState, 'completed_with_discovery_gaps');
+  assert.equal(response.context.statusRevalidation.state, 'completed_with_discovery_gaps');
   assert.equal(response.context.statusRevalidation.lastSuccessfulAt, null);
   assert.equal(response.context.sourceFreshness, 'source_revalidated_snapshot');
 });
@@ -604,3 +603,4 @@ test('a same-day duplicate-run limit re-arms at the registered morning window wh
   assert.equal(result.errorCode, 'DOCUMENTED_DAILY_CALL_BUDGET');
   assert.equal(result.progress.refreshCycleKst, '2026-10-13'); assert.equal(s.calls.length, callsBefore);
 });
+

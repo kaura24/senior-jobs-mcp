@@ -2,7 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
   "framework": null,
-  "buildCommand": "node scripts/verify-server-configuration.js && node scripts/build-static.js",
+  "buildCommand": "node scripts/verify-server-configuration.js && node scripts/verify-live-source.js && node scripts/build-static.js",
   "outputDirectory": "public",
   "installCommand": "npm ci --ignore-scripts --no-audit --no-fund",
   "functions": {
@@ -17,5 +17,6 @@
       "experimentalTriggers": [{ "type": "queue/v2beta", "topic": "senior-jobs-refresh" }]
     }
   },
-  "crons": []
+  "crons": [{ "path": "/api/refresh", "schedule": "0 21 * * *" }]
 }
+
