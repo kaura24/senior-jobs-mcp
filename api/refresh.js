@@ -17,7 +17,7 @@ module.exports = async function handler(req, res) {
   if (!['GET', 'POST'].includes(req.method)) return send(405, { errorCode: 'METHOD_NOT_ALLOWED' });
   if (!authorized(req.headers.authorization, process.env.CRON_SECRET)) return send(401, { errorCode: 'UNAUTHORIZED' });
   if (isRefreshPaused()) return send(200, pausedResult());
-  if (!process.env.BLOB_STORE_ID || !process.env.DATA_GO_KR_SERVICE_KEY) return send(503, { errorCode: 'SERVER_CONFIGURATION_REQUIRED' });
+  if (!(process.env.D1_DATABASE_ID || process.env.BLOB_STORE_ID) || !process.env.DATA_GO_KR_SERVICE_KEY) return send(503, { errorCode: 'SERVER_CONFIGURATION_REQUIRED' });
   const day = kstDay(new Date());
   if (req.method === 'POST' && req.headers['x-refresh-run-day'] !== day) return send(409, { errorCode: 'STALE_CONTINUATION' });
   const started = Date.now();
@@ -39,3 +39,4 @@ module.exports = async function handler(req, res) {
   }
 };
 module.exports.authorized = authorized;
+

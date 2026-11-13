@@ -15,3 +15,5 @@ credentials/
 *.p12
 *.pfx
 .DS_Store
+.wrangler/
+

@@ -1,7 +1,8 @@
 'use strict';
 const { productionStore } = require('../lib/blob-store');
 async function verify() {
-  const missing = ['DATA_GO_KR_SERVICE_KEY', 'CRON_SECRET', 'BLOB_STORE_ID'].filter(name => !process.env[name]);
+  const storageNames = process.env.D1_DATABASE_ID ? ['D1_DATABASE_ID', 'CLOUDFLARE_ACCOUNT_ID', 'CLOUDFLARE_D1_API_TOKEN'] : ['BLOB_STORE_ID'];
+  const missing = ['DATA_GO_KR_SERVICE_KEY', 'CRON_SECRET', ...storageNames].filter(name => !process.env[name]);
   if (missing.length) return { success: false, proofKind: 'server_configuration', missingVariableNames: missing, discoveryExecuted: false };
   try {
     const store = await productionStore();
@@ -13,3 +14,4 @@ async function verify() {
 }
 if (require.main === module) verify().then(result => { process.stdout.write(JSON.stringify(result) + '\n'); if (!result.success) process.exitCode = 1; });
 module.exports = { verify };
+

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://raw.githubusercontent.com/cloudflare/workers-sdk/main/packages/wrangler/config-schema.json",
+  "name": "senior-jobs-mcp-storage",
+  "account_id": "0ae5b2a5dc0d07651d66b5e4db2b0d0c",
+  "compatibility_date": "2026-11-14",
+  "d1_databases": [{
+    "binding": "DB",
+    "database_name": "senior-jobs-mcp",
+    "database_id": "8df2c092-4e5a-4eb6-a3a2-2e5dd97d5125",
+    "migrations_dir": "migrations"
+  }]
+}
