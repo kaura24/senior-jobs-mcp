@@ -7,7 +7,7 @@ class PublicSourceError extends Error {
 async function post(path, body) {
   try {
     const response = await fetch(origin + path, { method: 'POST', redirect: 'error', cache: 'no-store',
-      headers: { 'content-type': 'application/json; charset=utf-8' }, body: JSON.stringify(body), signal: AbortSignal.timeout(12000) });
+      headers: { 'content-type': 'application/json; charset=utf-8' }, body: JSON.stringify(body), signal: AbortSignal.timeout(30000) });
     if (!response.ok) throw new PublicSourceError(`PUBLIC_SOURCE_HTTP_${response.status}`);
     return await response.json();
   } catch (cause) {
