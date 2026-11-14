@@ -34,10 +34,10 @@ The import merges by the namespaced official identifier, retains existing IDs ab
 
 `verify-d1-mcp.js` drives the real MCP HTTP handler locally with `D1_WRANGLER_READS=1`. Describe, search and detail all returned HTTP 200 from the real remote D1, with `snapshotOrigin: d1`, 718 matches and verified official source links. Detail documents, salary and other missing fields are not fabricated. The local Wrangler mode is read-only and explicitly rejects running inside Vercel.
 
-The existing deployed connector still reports `storage_unavailable` and its bundled 2026-10-12 fallback. Its Vercel Production environment contains only the original source secret, Cron secret and Blob configuration; no D1 runtime credential is connected. Therefore this change has NOT switched the deployed MCP or its daily Cron to D1. That runtime connection remains blocked under the user's prohibition on new tokens and permission expansion. Do not copy the local Wrangler OAuth token or refresh token into Vercel to bypass this boundary.
+The original manual-recollection verification did not switch the deployed connector. That boundary was subsequently resolved using the user's approved Worker deployment permission and existing Vercel Production OIDC. Production MCP and Cron/Queue now use the same D1 through the fixed-operation Worker, without a long-lived D1 API token. See [D1-MIGRATION.md](D1-MIGRATION.md) and [D1-OIDC-BRIDGE.md](D1-OIDC-BRIDGE.md) for the live deployment and checks.
 
-The user's final correction excludes Blob recovery and migration entirely. Do not retry the old Blob, wait for its restoration, or make future collection depend on it. The D1-only runtime implementation and current deployment blocker are documented in [D1-MIGRATION.md](D1-MIGRATION.md).
+The user's final correction excludes Blob recovery and migration entirely. Do not retry the old Blob, wait for its restoration, or make future collection depend on it.
 
 ## Checks
 
-138 tests passed, including source field/status/date checks, merge preservation, evidence history, stale import rejection, deduplication, official links and slash-delimited regions. The real remote D1 readback and local HTTP MCP checks also passed. Runtime production cutover is unverified and remains pending.
+The original recollection passed 138 tests and real remote D1/local HTTP checks. The subsequent OIDC production release passed 149 tests, authenticated build checks, staged/public MCP reads and live Cron/Queue D1 writes. The original counts and timestamps above describe the manual collection, not a later live run's totals.

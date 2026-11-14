@@ -32,10 +32,10 @@ Vercel Production requires:
 
 - `CLOUDFLARE_ACCOUNT_ID` = the account above.
 - `D1_DATABASE_ID` = the database above.
-- `CLOUDFLARE_D1_API_TOKEN` = a server-side D1 token for that account.
+- `D1_WORKER_URL` = `https://senior-jobs-mcp-storage.kaura24.workers.dev`.
 - Existing `CRON_SECRET` remains required. Public-source collection does not use `DATA_GO_KR_SERVICE_KEY`.
 
-Keep tokens in the server's secret manager. Do not copy a Wrangler OAuth access or refresh token into Vercel: the access token expires and a refresh token grants persistent access to the CLI session.
+The deployed connection uses existing Vercel Production OIDC, verified by a Worker bound only to this D1. It needs no long-lived Cloudflare API token in Vercel. Do not copy a Wrangler OAuth access or refresh token into Vercel. See [D1-OIDC-BRIDGE.md](D1-OIDC-BRIDGE.md) for exact identity checks and the four allowed storage operations.
 
 Both account and database must match this project's identifiers. `lib/runtime-store.js` is the only production storage factory; MCP, Cron and Queue use D1 exclusively. Missing D1 credentials fail the build and runtime checks. Storage failures return explicit MCP errors without Blob or bundled-sample fallback. Legacy Blob code remains only for historical regression tests; production entry points do not import it.
 
@@ -43,7 +43,13 @@ Both account and database must match this project's identifiers. `lib/runtime-st
 
 Daily scheduling remains `0 21 * * *` UTC (06:00 KST). The source/schema preflight must pass before deployment. `migrations/0002_public_collection.sql` is additive and creates the evidence/report tables if absent; those tables already exist in the project D1 from the verified import.
 
-The existing Vercel Production environment was rechecked: source secret, Cron secret and legacy Blob configuration only, with no D1 runtime credential. Therefore this code is not deployed and automatic D1 refresh is not active. No new credential, permission expansion or paid plan is authorized. Do not transfer local Wrangler OAuth credentials to Vercel. GitHub main updates require prior user approval.
+The user's subsequent instruction replaces daily full collection with source-date incremental ingestion. `refresh/scheduled.js` never starts a new national scan. After the explicitly started baseline, daily runs perform local expiry only, with zero source requests until a verified modified-since change feed is available. See [D1-SYNC-POLICY.md](D1-SYNC-POLICY.md) for timestamp meanings, watermark rules and current limitations.
+
+On 2026-11-14 the user approved the Worker deployment permission increase. Existing Wrangler login now includes `workers_scripts:write` and the prior D1 scope. The account's Workers Free plan was verified; no paid conversion or long-lived API token was created. Vercel Production received only the account/database identifiers and Worker URL. GitHub main remains unchanged.
+
+The completed source-baseline release is `dpl_EpJeNAtiMemv6VhaDM6n4U23e1BJ`, built from runtime commit `f61a337bb0f77a3f8f5ac410802d771495c80416` on `codex/d1-migration-20261114`. Real staged and public MCP reads returned D1 data. Dashboard Run dispatched the private Queue, and live workers wrote all 277 regions to the same D1. The subsequent scheduled-maintenance release keeps the existing public alias and Cron, while disabling new automatic source scans.
+
+An actual official region response took 14.5 seconds. The source timeout is therefore 30 seconds; the previous 12-second deployment exhausted its bounded retries without losing its cursor. The corrected deployment resumed that cursor and passed the delayed region.
 
 ## Validation
 
@@ -54,6 +60,6 @@ node scripts/verify-d1-mcp.js
 npx wrangler@4.162.0 d1 execute senior-jobs-mcp --remote --command "SELECT COUNT(*) AS imported_jobs FROM jobs;" --json
 ```
 
-The captured official 718 records passed through the operational collector in 25 isolated deliveries, producing 718 SQL jobs and 718 original evidence rows. The real MCP HTTP handler returned 718 matches using that same isolated SQL store; duplicate completion changed no snapshot. The real remote D1 also returned 718 matches through the local MCP HTTP handler. Production cutover and server-side automatic collection remain blocked by the missing authorized D1 runtime connection.
+The captured official 718 records passed through the operational collector in 25 isolated deliveries, producing 718 SQL jobs and 718 original evidence rows. The real MCP HTTP handler returned 718 matches using that same isolated SQL store; duplicate completion changed no snapshot. Both the staged Production deployment and public MCP alias also returned actual remote D1 data. Full live collection results must be read from the completed D1 run report, not inferred from trigger acceptance.
 
-145 local tests passed, including source/storage failure recovery, concurrent delivery leases, duplicate completion, preserved historical rows, hidden closed postings, explicit MCP storage errors and a dependency check excluding the legacy Blob adapter from every production entry point and build preflight.
+153 local tests cover zero-source daily maintenance, unchanged source timestamps, local expiry, idempotency, source/storage failure recovery, concurrent leases, preserved historical rows, fixed-query Worker behavior and signed OIDC rejection. A dependency check excludes the legacy Blob adapter from production entry points and build checks.

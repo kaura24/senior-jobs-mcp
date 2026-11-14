@@ -5,14 +5,14 @@
 - Vercel 프로젝트: `senior-jobs-poc-mcp`
 - 팀: `kaura24-7661s-projects`
 - 공개 MCP: `https://senior-jobs-poc-mcp.vercel.app/api/mcp`
-- 기존 Production 배포: `dpl_CPbMsATdbfnBNFaMe58DAz782gKD`
+- 최초 전국 기준 수집 배포: `dpl_EpJeNAtiMemv6VhaDM6n4U23e1BJ`
 - 버전: 1.3.0
 
-이 브랜치의 D1 전용 변경은 아직 운영에 배포하지 않았습니다. 전용 D1 `senior-jobs-mcp`에 공식 공개 원천의 실제 공고 718건을 적재하고 재조회했습니다. Vercel 운영 환경에는 D1 인증 연결이 없으므로 기존 권한 범위에서 배포를 완료할 수 없습니다.
+전용 D1 `senior-jobs-mcp`와 Production OIDC Worker를 사용하도록 기존 운영 도메인을 전환했습니다. 공개 MCP 조회와 기존 크론·Queue의 실제 D1 쓰기를 확인했습니다. 최초 기준 수집 커밋은 `f61a337bb0f77a3f8f5ac410802d771495c80416`이며 후속 갱신 정책은 일일 전량 스캔을 금지합니다. 현재 배포 ID는 Vercel 프로젝트의 Production 대상과 Cron 정의에서 확인합니다.
 
 ## 수집·갱신 경로
 
-Cron `/api/refresh`는 `0 21 * * *` UTC (06:00 KST)이며 기존 `CRON_SECRET`으로 인증합니다. Queue topic `senior-jobs-refresh`와 기존 worker를 유지합니다. `refresh/task.js`는 공식 공개 원천을 사용하는 `refresh/public-daily.js`만 실행합니다. 최초 작업은 지역 목록을 저장하고, 후속 작업은 한 페이지씩 검증·적재합니다. 접수중 상태와 KST 신청기간 및 사업연도를 검사합니다.
+Cron `/api/refresh`는 `0 21 * * *` UTC (06:00 KST)이며 기존 `CRON_SECRET`으로 인증합니다. Queue topic `senior-jobs-refresh`와 기존 worker를 유지합니다. `refresh/task.js`는 `refresh/scheduled.js`를 실행합니다. 이미 시작한 최초 기준 수집만 페이지별로 마치며, 이후 일일 작업은 외부 원천 요청 없이 D1의 기간 만료만 처리합니다. 매일 전국 전체를 다시 수집하지 않습니다. 날짜 기준 변경 피드가 검증될 때까지 자동 원천 수집은 중지합니다. [갱신 정책](D1-SYNC-POLICY.md)을 참고하세요.
 
 공고 ID·원본 근거·진행 위치를 전용 D1에 보존합니다. 게시와 페이지 cursor는 동일 SQL 변경으로 저장하고 revision과 lease로 중복 실행을 제어합니다. 원천 실패와 반복 페이지는 cursor를 진행시키지 않으며 오류 상태를 보존합니다. 일시 오류는 기존 큐 정책으로 최대 5회 시도합니다. 다음 작업은 저장된 위치에서 재개합니다.
 
@@ -25,12 +25,12 @@ Cron `/api/refresh`는 `0 21 * * *` UTC (06:00 KST)이며 기존 `CRON_SECRET`�
 | 이름 | 용도 | 보관 위치 |
 | --- | --- | --- |
 | `CRON_SECRET` | 갱신 호출 인증 | 기존 Production Secret |
-| `CLOUDFLARE_ACCOUNT_ID` | 지정된 프로젝트 계정 검증 | 현재 운영에 없음 |
-| `D1_DATABASE_ID` | 지정된 전용 D1 검증 | 현재 운영에 없음 |
-| `CLOUDFLARE_D1_API_TOKEN` | 서버 D1 읽기·쓰기 | 현재 운영에 없음 |
-| Vercel OIDC | 기존 Queue 접근 | 서버가 자동 제공하는 단기 자격 |
+| `CLOUDFLARE_ACCOUNT_ID` | 지정된 프로젝트 계정 검증 | Production 공개 구성 |
+| `D1_DATABASE_ID` | 지정된 전용 D1 검증 | Production 공개 구성 |
+| `D1_WORKER_URL` | 전용 D1 Worker 주소 | Production 공개 구성 |
+| Vercel OIDC | D1 Worker 인증 및 기존 Queue 접근 | 서버가 자동 제공하는 단기 자격 |
 
-공식 공개 원천에는 API 키가 필요하지 않습니다. 기존 source secret과 Blob 구성은 이 브랜치에서 사용하지 않습니다. 비밀 값을 문서·로그·URL에 기록하지 않으며, 로컬 Wrangler OAuth를 Vercel로 복사하지 않습니다. 새 자격증명·권한 확대·유료 전환은 승인되지 않았습니다.
+공식 공개 원천에는 API 키가 필요하지 않습니다. 기존 source secret과 Blob 구성은 사용하지 않습니다. 사용자 승인으로 Wrangler에 Worker 스크립트 배포 범위만 추가했으며 새 장기 API 토큰이나 유료 전환은 사용하지 않습니다. 로컬 OAuth는 Vercel에 복사하지 않습니다. Worker의 정확한 Production 신원 검증과 허용 기능은 [D1-OIDC-BRIDGE.md](D1-OIDC-BRIDGE.md)를 참고하세요.
 
 ## 배포와 Git
 
@@ -42,7 +42,7 @@ Vercel 프로젝트는 Git 저장소와 연결되어 있지 않습니다. 기능
 
 HTTP trigger 수락만으로 갱신 성공을 주장하지 않습니다. 저장된 `runPlan`의 지역 cursor·페이지·원천 호출 수·신규/변경/동일/실패 건수와 완료된 `public_ingestion_runs`를 확인합니다. 원천 미관찰을 마감으로 단정하지 않습니다. 공개 지역 목록과 A/C/B/E 유형의 관찰 범위는 전국 모든 일자리 원천의 완전한 수집을 뜻하지 않습니다.
 
-조회 응답에는 원천 관찰 시각·갱신 범위·상세 미수집 상태를 표시합니다. 현재 완료된 것은 실제 D1 적재와 로컬/격리 MCP 검증이며, 운영 배포와 운영 자동갱신은 미완료입니다.
+조회 응답에는 원천 관찰 시각·갱신 범위·상세 미수집 상태를 표시합니다. 운영 전환과 실제 크론·Queue 경로를 확인했습니다. 최종 수집 완료는 D1의 `runPlan.phase: done`, 지역 수, 오류 상태와 완료 실행 보고서를 함께 확인한 뒤 판정합니다.
 
 ## 과거 운영 이력
 

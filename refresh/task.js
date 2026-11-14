@@ -1,13 +1,13 @@
 'use strict';
 const { productionStore } = require('../lib/runtime-store');
 const { writeCheckpoint } = require('../lib/checkpoint');
-const { runPublicChunk } = require('./public-daily');
+const { runScheduledChunk } = require('./scheduled');
 const publicSource = require('./public-source');
 const { enqueue, retryable } = require('../lib/refresh-queue');
 const { kstDay } = require('../lib/jobs');
 const { isRefreshPaused, pausedResult } = require('../lib/refresh-policy');
 const errorCode = cause => /^[A-Z][A-Z0-9_]{1,80}$/.test(cause?.code || '') ? cause.code : 'STORAGE_UNAVAILABLE';
-async function executeChunk(day, { storeFactory = productionStore, chunk = runPublicChunk,
+async function executeChunk(day, { storeFactory = productionStore, chunk = runScheduledChunk,
   sourceFactory = () => publicSource, dispatch = enqueue, log = event => console.log(JSON.stringify(event)),
   isPaused = isRefreshPaused } = {}) {
   if (isPaused()) {

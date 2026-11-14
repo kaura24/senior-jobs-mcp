@@ -57,7 +57,7 @@ test('a chunk crossing KST midnight queues the current day so the next delivery 
   let tick = Date.parse('2026-10-12T14:59:59.998Z'), nextDay;
   class Clock extends Date { constructor(...args) { super(...(args.length ? args : [tick])); } static now() { return tick; } }
   const sandbox = { module: { exports: {} }, Date: Clock, process: { env: {} }, fetch: () => {}, console,
-    require: name => ({ '../lib/runtime-store': {}, '../lib/checkpoint': {}, './public-daily': {}, './public-source': {},
+    require: name => ({ '../lib/runtime-store': {}, '../lib/checkpoint': {}, './scheduled': {}, './public-source': {},
       '../lib/refresh-queue': { retryable: () => false }, '../lib/jobs': { kstDay }, '../lib/refresh-policy': require('../lib/refresh-policy') }[name]) };
   vm.runInNewContext(fs.readFileSync(require.resolve('../refresh/task'), 'utf8'), sandbox);
   await sandbox.module.exports.executeChunk('2026-10-12', { isPaused: () => false, storeFactory: async () => { tick += 4; return {}; }, sourceFactory: () => ({}),
