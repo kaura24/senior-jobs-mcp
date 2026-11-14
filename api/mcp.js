@@ -45,7 +45,7 @@ module.exports = async function handler(req, res) {
   try { message = await readBody(req); }
   catch (cause) { return send(cause.message === 'Request body too large' ? 413 : 400, error(null, -32700, 'Invalid JSON request')); }
   let dataset = bundled;
-  if ((process.env.D1_DATABASE_ID || process.env.BLOB_STORE_ID) && message.method === 'tools/call') {
+  if ((process.env.D1_DATABASE_ID || process.env.BLOB_STORE_ID || process.env.D1_WRANGLER_READS === '1') && message.method === 'tools/call') {
     try { dataset = await loadDataset(await productionStore(), true); }
     catch { dataset = { ...bundled, refreshState: { ...bundled.refreshState, state: 'storage_unavailable', errorCode: 'STORAGE_UNAVAILABLE' } }; }
   }

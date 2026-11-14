@@ -1,5 +1,9 @@
 # D1 migration
 
+## Current result
+
+The original Blob export remains blocked, but a free official public-source recollection has now populated D1 with 718 real current postings using the existing Wrangler D1 connection. D1 readback, duplicate reprocessing and the real local MCP HTTP handler were verified. See [D1-PUBLIC-RECOLLECTION.md](D1-PUBLIC-RECOLLECTION.md) for the result, reproducible commands and the production authentication boundary. No paid conversion, new API token or permission expansion was performed.
+
 ## Prepared database
 
 - Account: `0ae5b2a5dc0d07651d66b5e4db2b0d0c`
@@ -48,4 +52,4 @@ npm test
 npx wrangler@4.162.0 d1 execute senior-jobs-mcp --remote --command "SELECT COUNT(*) AS imported_jobs FROM jobs;" --json
 ```
 
-134 tests passed locally on Node 26, including real SQLite integration checks for snapshot hashes, row separation, stale-writer rejection, transactional rollback, Unicode import, checkpoint preservation and detail-order preservation. The remote D1 schema was verified. Actual source import, runtime token setup, production cutover and collection resumption remain pending.
+138 tests passed locally on Node 26, including real SQLite checks for snapshot hashes, row separation, stale-writer rejection, transactional rollback, Unicode import, checkpoint preservation, public-source merge and official source links. The remote D1 contains 718 verified public-source postings. The original Blob-source migration, authorized production runtime connection, production cutover and server-side automatic collection remain pending.
