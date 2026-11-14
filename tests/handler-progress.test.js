@@ -7,10 +7,10 @@ test('a failed authenticated queue dispatch records the failure while preserving
   for (const prior of [null, { value: { leaseUntil: '2020-01-01T00:00:00Z' }, etag: 'old' }]) {
     const writes = [], logs = []; let dispatchCalls = 0;
     const store = { readControl: async () => prior, writeControl: async value => { writes.push(value); } };
-    const sandbox = { module: { exports: {} }, process: { env: { CRON_SECRET: 'fake-secret', BLOB_STORE_ID: 'fixture', DATA_GO_KR_SERVICE_KEY: 'fake-key' } },
+    const sandbox = { module: { exports: {} }, process: { env: { CRON_SECRET: 'fake-secret' } },
       Date, Buffer, AbortSignal, fetch: async () => {}, console: { log: x => logs.push(JSON.parse(x)), error: x => logs.push(JSON.parse(x)) },
       require: name => ({ 'node:crypto': require('node:crypto'),
-        '../lib/blob-store': { productionStore: async () => store },
+        '../lib/runtime-store': { productionStore: async () => store, configured: () => true },
         '../lib/refresh-queue': { enqueue: async () => { dispatchCalls++; throw new Error('fake-secret'); } },
         '../lib/jobs': { kstDay: () => '2026-10-12' }, '../lib/refresh-policy': { isRefreshPaused: () => false } }[name]) };
     vm.runInNewContext(fs.readFileSync(require.resolve('../api/refresh'), 'utf8'), sandbox);
@@ -26,3 +26,4 @@ test('a failed authenticated queue dispatch records the failure while preserving
     assert.ok(!JSON.stringify(logs).includes('fake-secret') && !JSON.stringify(logs).includes('fake-key'));
   }
 });
+

@@ -1,13 +1,14 @@
 'use strict';
-const { productionStore, writeCheckpoint } = require('../lib/blob-store');
-const { runDailyChunk } = require('./daily');
-const { createSource } = require('./source');
-const { errorCode } = require('./runner');
+const { productionStore } = require('../lib/runtime-store');
+const { writeCheckpoint } = require('../lib/checkpoint');
+const { runPublicChunk } = require('./public-daily');
+const publicSource = require('./public-source');
 const { enqueue, retryable } = require('../lib/refresh-queue');
 const { kstDay } = require('../lib/jobs');
 const { isRefreshPaused, pausedResult } = require('../lib/refresh-policy');
-async function executeChunk(day, { storeFactory = productionStore, chunk = runDailyChunk,
-  sourceFactory = createSource, dispatch = enqueue, log = event => console.log(JSON.stringify(event)),
+const errorCode = cause => /^[A-Z][A-Z0-9_]{1,80}$/.test(cause?.code || '') ? cause.code : 'STORAGE_UNAVAILABLE';
+async function executeChunk(day, { storeFactory = productionStore, chunk = runPublicChunk,
+  sourceFactory = () => publicSource, dispatch = enqueue, log = event => console.log(JSON.stringify(event)),
   isPaused = isRefreshPaused } = {}) {
   if (isPaused()) {
     log({ event: 'refresh_paused', state: 'paused_by_request' });
@@ -19,8 +20,7 @@ async function executeChunk(day, { storeFactory = productionStore, chunk = runDa
   try {
     store = await storeFactory();
     phase = 'chunk';
-    const source = sourceFactory(process.env.DATA_GO_KR_SERVICE_KEY, fetch, {
-      timeoutMs: 15000, onEvent: event => log({ event: 'source_request', ...event }) });
+    const source = sourceFactory();
     const result = await chunk({ store, source,
       schedulerEnabled: true, budgetMs: 20000, onEvent: log });
     log({ event: 'refresh_chunk', state: result.state, errorCode: result.errorCode || null,
@@ -53,3 +53,4 @@ async function executeChunk(day, { storeFactory = productionStore, chunk = runDa
   }
 }
 module.exports = { executeChunk };
+

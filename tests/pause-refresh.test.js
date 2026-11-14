@@ -17,8 +17,8 @@ test('production enables daily nationwide refresh at 06:00 KST', () => {
 test('authenticated refresh dispatches; unauthenticated calls do not', async () => {
   let dispatched = 0;
   const sandbox = { module: { exports: {} }, Buffer, Date, console,
-    process: { env: { CRON_SECRET: 'fixture-secret', BLOB_STORE_ID: 'fixture', DATA_GO_KR_SERVICE_KEY: 'fixture' } },
-    require: name => ({ 'node:crypto': require('node:crypto'), '../lib/blob-store': {},
+    process: { env: { CRON_SECRET: 'fixture-secret' } },
+    require: name => ({ 'node:crypto': require('node:crypto'), '../lib/runtime-store': { configured: () => true },
       '../lib/refresh-queue': { enqueue: async () => { dispatched++; } },
       '../lib/jobs': { kstDay: () => '2026-11-13' },
       '../lib/refresh-policy': require('../lib/refresh-policy') }[name]) };

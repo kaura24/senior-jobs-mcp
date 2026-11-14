@@ -5,10 +5,17 @@ class PublicSourceError extends Error {
   constructor(code) { super(code); this.code = code; }
 }
 async function post(path, body) {
-  const response = await fetch(origin + path, { method: 'POST', redirect: 'error', cache: 'no-store',
-    headers: { 'content-type': 'application/json; charset=utf-8' }, body: JSON.stringify(body), signal: AbortSignal.timeout(30000) });
-  if (!response.ok) throw new PublicSourceError(`PUBLIC_SOURCE_HTTP_${response.status}`);
-  return response.json();
+  try {
+    const response = await fetch(origin + path, { method: 'POST', redirect: 'error', cache: 'no-store',
+      headers: { 'content-type': 'application/json; charset=utf-8' }, body: JSON.stringify(body), signal: AbortSignal.timeout(12000) });
+    if (!response.ok) throw new PublicSourceError(`PUBLIC_SOURCE_HTTP_${response.status}`);
+    return await response.json();
+  } catch (cause) {
+    if (cause instanceof PublicSourceError) throw cause;
+    if (cause instanceof SyntaxError) throw new PublicSourceError('INVALID_PUBLIC_RESPONSE');
+    if (cause?.name === 'TimeoutError' || cause?.name === 'AbortError') throw new PublicSourceError('PUBLIC_SOURCE_TIMEOUT');
+    throw new PublicSourceError('PUBLIC_SOURCE_NETWORK');
+  }
 }
 async function discoverRegions() {
   const regions = new Map();

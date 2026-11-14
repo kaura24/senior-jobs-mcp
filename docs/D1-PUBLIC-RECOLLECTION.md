@@ -36,7 +36,7 @@ The import merges by the namespaced official identifier, retains existing IDs ab
 
 The existing deployed connector still reports `storage_unavailable` and its bundled 2026-10-12 fallback. Its Vercel Production environment contains only the original source secret, Cron secret and Blob configuration; no D1 runtime credential is connected. Therefore this change has NOT switched the deployed MCP or its daily Cron to D1. That runtime connection remains blocked under the user's prohibition on new tokens and permission expansion. Do not copy the local Wrangler OAuth token or refresh token into Vercel to bypass this boundary.
 
-The previously blocked Blob export is not required for this new, independently sourced collection. Blob source-history migration remains unavailable until the original store becomes readable through an authorized path.
+The user's final correction excludes Blob recovery and migration entirely. Do not retry the old Blob, wait for its restoration, or make future collection depend on it. The D1-only runtime implementation and current deployment blocker are documented in [D1-MIGRATION.md](D1-MIGRATION.md).
 
 ## Checks
 

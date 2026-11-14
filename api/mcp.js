@@ -2,7 +2,7 @@
 
 const { respond, error } = require('../lib/protocol');
 const { withDataset, bundled } = require('../lib/job-context');
-const { productionStore, loadDataset } = require('../lib/blob-store');
+const { productionStore, loadDataset } = require('../lib/runtime-store');
 const maximumBodyBytes = 65536;
 
 async function readBody(req) {
@@ -45,9 +45,13 @@ module.exports = async function handler(req, res) {
   try { message = await readBody(req); }
   catch (cause) { return send(cause.message === 'Request body too large' ? 413 : 400, error(null, -32700, 'Invalid JSON request')); }
   let dataset = bundled;
-  if ((process.env.D1_DATABASE_ID || process.env.BLOB_STORE_ID || process.env.D1_WRANGLER_READS === '1') && message.method === 'tools/call') {
-    try { dataset = await loadDataset(await productionStore(), true); }
-    catch { dataset = { ...bundled, refreshState: { ...bundled.refreshState, state: 'storage_unavailable', errorCode: 'STORAGE_UNAVAILABLE' } }; }
+  if (message.method === 'tools/call') {
+    try { dataset = await loadDataset(await productionStore()); }
+    catch (cause) {
+      const code = ['SERVER_CONFIGURATION_REQUIRED', 'D1_DATA_NOT_COLLECTED'].includes(cause.code) ? cause.code : 'STORAGE_UNAVAILABLE';
+      return send(200, { jsonrpc: '2.0', id: message.id ?? null, result: { isError: true,
+        content: [{ type: 'text', text: code }], structuredContent: { errorCode: code, storage: 'd1', dataReturned: false } } });
+    }
   }
   const result = withDataset(dataset, () => respond(message));
   return result === null ? send(202) : send(200, result);
