@@ -12,6 +12,8 @@
     "@vercel/blob": "^2.3.0",
     "@vercel/functions": "^3.9.11",
     "@vercel/queue": "0.8.0",
-    "fast-xml-parser": "^5.0.0"
+    "fast-xml-parser": "^5.0.0",
+    "jose": "5.10.0"
   }
 }
+

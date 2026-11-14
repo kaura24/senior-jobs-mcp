@@ -1,6 +1,10 @@
 {
   "$schema": "https://raw.githubusercontent.com/cloudflare/workers-sdk/main/packages/wrangler/config-schema.json",
   "name": "senior-jobs-mcp-storage",
+  "main": "worker/index.mjs",
+  "workers_dev": true,
+  "preview_urls": false,
+  "compatibility_flags": ["nodejs_compat"],
   "account_id": "0ae5b2a5dc0d07651d66b5e4db2b0d0c",
   "compatibility_date": "2026-11-14",
   "d1_databases": [{
