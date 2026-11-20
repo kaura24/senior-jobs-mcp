@@ -7,28 +7,30 @@ const { executeChunk } = require('../refresh/task');
 const { isRefreshPaused, pausedResult } = require('../lib/refresh-policy');
 const { kstDay } = require('../lib/jobs');
 
-test('production enables daily nationwide refresh at 06:00 KST', () => {
+test('production enables scheduled maintenance at 06:00 KST', () => {
   const config = require('../vercel.json');
   assert.equal(isRefreshPaused(), false);
   assert.deepEqual(config.crons, [{ path: '/api/refresh', schedule: '0 21 * * *' }]);
   assert.equal(config.functions['api/refresh-worker.js'].experimentalTriggers[0].topic, 'senior-jobs-refresh');
 });
 
-test('authenticated refresh dispatches; unauthenticated calls do not', async () => {
-  let dispatched = 0;
-  const sandbox = { module: { exports: {} }, Buffer, Date, console,
-    process: { env: { CRON_SECRET: 'fixture-secret' } },
-    require: name => ({ 'node:crypto': require('node:crypto'), '../lib/runtime-store': { configured: () => true },
-      '../lib/refresh-queue': { enqueue: async () => { dispatched++; } },
+test('a direct request queues source collection and a Vercel cron request queues maintenance without a secret', async () => {
+  const dispatched = [];
+  const sandbox = { module: { exports: {} }, Date, console,
+    process: { env: {} },
+    require: name => ({ '../lib/runtime-store': { configured: () => true },
+      '../lib/refresh-queue': { enqueue: async (day, _progress, sourceRefresh) => dispatched.push({ day, sourceRefresh }) },
       '../lib/jobs': { kstDay: () => '2026-11-13' },
       '../lib/refresh-policy': require('../lib/refresh-policy') }[name]) };
   vm.runInNewContext(fs.readFileSync(require.resolve('../api/refresh'), 'utf8'), sandbox);
   let body;
   const response = { setHeader() {}, end(text) { body = JSON.parse(text); } };
-  await sandbox.module.exports({ method: 'GET', headers: { authorization: 'Bearer wrong' } }, response);
-  assert.equal(response.statusCode, 401); assert.equal(dispatched, 0);
-  await sandbox.module.exports({ method: 'GET', headers: { authorization: 'Bearer fixture-secret' } }, response);
-  assert.equal(response.statusCode, 202); assert.equal(body.state, 'queued'); assert.equal(dispatched, 1);
+  await sandbox.module.exports({ method: 'GET', headers: {} }, response);
+  assert.equal(response.statusCode, 202);
+  assert.equal(body.state, 'queued');
+  await sandbox.module.exports({ method: 'GET', headers: { 'user-agent': 'vercel-cron/1.0' } }, response);
+  assert.equal(response.statusCode, 202);
+  assert.deepEqual(dispatched, [{ day: '2026-11-13', sourceRefresh: true }, { day: '2026-11-13', sourceRefresh: false }]);
 });
 
 test('a pause detected after a fixture chunk blocks continuation and error checkpoint writes', async () => {

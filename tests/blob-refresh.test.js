@@ -6,7 +6,6 @@ const { runRefresh } = require('../refresh/runner');
 const { parsePage, fetchPage } = require('../refresh/source');
 const { withDataset } = require('../lib/job-context');
 const jobs = require('../lib/jobs');
-const { authorized } = require('../api/refresh');
 const now = () => new Date('2026-10-12T11:00:00Z');
 test('Blob failure telemetry identifies the SDK failure without exposing its message or credentials', async () => {
   const events = [];
@@ -193,13 +192,6 @@ test('source network errors are redacted and redirects are never followed with t
     throw new Error(url.toString());
   } }), error => error.code === 'UPSTREAM_NETWORK_ERROR' && !error.message.includes('test-value'));
 });
-test('Cron authentication fails closed with no secret, wrong secret or missing authorization', () => {
-  assert.equal(authorized('Bearer test-value', 'test-value'), true);
-  assert.equal(authorized('Bearer wrong', 'test-value'), false);
-  assert.equal(authorized(undefined, 'test-value'), false);
-  assert.equal(authorized('Bearer ', ''), false);
-});
-
 test('MCP exposes newer paused discovery independently of existing-scope success even if the attempt began before verification', async () => {
   const sdk = memorySdk(), snapshotScope = structuredClone(snapshot);
   const scope = { state: 'succeeded', dayKst: '2026-10-12', targetIds: 1, confirmedIds: 1, unverifiedIds: 0,

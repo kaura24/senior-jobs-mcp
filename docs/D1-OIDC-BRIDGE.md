@@ -23,7 +23,7 @@ The Worker accepts only four named operations: read a current/control document, 
 
 The native D1 publication query additionally refuses to omit any existing job or detail ID. Job updates retain their prior evidence; failed/stale writes cannot advance the cursor. The Worker has no other database bindings, routes, scheduled triggers, KV storage or API tokens. Version preview URLs are disabled.
 
-Vercel Production uses the existing Cron secret plus three non-secret configuration values: the known account ID, database ID and `D1_WORKER_URL`. `@vercel/functions/oidc` obtains the current short-lived token for each request. Both MCP reads and Queue collection writes use this bridge. Blob paths and bundled fallback remain excluded.
+Vercel Production uses the account ID, database ID and `D1_WORKER_URL`. `@vercel/functions/oidc` obtains the current short-lived token for each Worker request. Both MCP reads and Queue collection writes use this bridge. The public refresh endpoint queues work without authenticating callers.
 
 ## Verification and release
 

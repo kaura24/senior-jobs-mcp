@@ -2,7 +2,7 @@
 const { productionStore, configured } = require('../lib/runtime-store');
 async function verify() {
   const connection = process.env.D1_WORKER_URL ? 'D1_WORKER_URL' : 'CLOUDFLARE_D1_API_TOKEN';
-  const missing = ['CRON_SECRET', 'D1_DATABASE_ID', 'CLOUDFLARE_ACCOUNT_ID', connection].filter(name => !process.env[name]);
+  const missing = ['D1_DATABASE_ID', 'CLOUDFLARE_ACCOUNT_ID', connection].filter(name => !process.env[name]);
   if (missing.length) return { success: false, proofKind: 'server_configuration', missingVariableNames: missing, discoveryExecuted: false };
   if (!configured()) return { success: false, errorCode: 'PROJECT_D1_CONFIGURATION_MISMATCH' };
   try {

@@ -7,6 +7,7 @@ const path = require('node:path');
 const { DatabaseSync } = require('node:sqlite');
 const { createD1Store } = require('../lib/d1-store');
 const { runPublicChunk } = require('../refresh/public-daily');
+const { runScheduledChunk } = require('../refresh/scheduled');
 const { posting, PublicSourceError } = require('../refresh/public-source');
 const { productionStore, loadDataset, configured, accountId, databaseId } = require('../lib/runtime-store');
 const at = '2026-11-14T01:00:00Z', now = () => new Date(at);
@@ -22,12 +23,12 @@ function setup(t) {
   const store = createD1Store(async (sql, params) => db.prepare(sql).all(...params));
   return { db, store };
 }
-function source(pages) {
+function source(pages, observedAt = at) {
   return { posting, discoverRegions: async () => ({ regions: pages.map((_, index) => ({ province: 'fixture', district: String(index) })) }),
     fetchRegionPage: async region => {
       const rows = pages[Number(region.district)];
       if (rows instanceof Error) throw rows;
-      return { rows, total: rows.length, observedAt: at };
+      return { rows, total: rows.length, observedAt };
     } };
 }
 async function drain(store, upstream) {
@@ -87,6 +88,29 @@ test('next-day refresh preserves prior rows and history while hiding absent and 
   assert.deepEqual(current.value.snapshot.metadata.refresh.queryableIds, ['SR_A_3_fixture']);
   const response = await search(store);
   assert.equal(response.structuredContent.totalMatches, 1);
+});
+test('a manual source refresh can start after local maintenance and retains the published scope while collecting', async t => {
+  const { store } = setup(t);
+  await drain(store, source([[raw('1')]]));
+  const today = '2026-11-20T02:00:00.000Z';
+  const options = { store, now: () => new Date(today), source: source([[raw('2')], [raw('3')]], today) };
+  assert.equal((await runScheduledChunk(options)).state, 'local_maintenance_completed');
+  const before = (await store.readCurrent()).value.snapshot.metadata;
+
+  assert.equal((await runScheduledChunk({ ...options, sourceRefresh: true })).continue, true);
+  assert.deepEqual((await store.readCurrent()).value.snapshot.metadata, before);
+
+  assert.equal((await runScheduledChunk(options)).continue, true);
+  const partial = (await store.readCurrent()).value;
+  assert.equal(partial.snapshot.metadata.observedAt, today);
+  assert.deepEqual(partial.snapshot.metadata.refresh.queryableIds, ['SR_A_1_fixture', 'SR_A_2_fixture']);
+  assert.equal(partial.refreshState.lastSuccessfulAt, before.observedAt);
+
+  assert.equal((await runScheduledChunk(options)).state, 'public_collection_completed');
+  const completed = (await store.readCurrent()).value;
+  assert.deepEqual(completed.snapshot.metadata.refresh.queryableIds, ['SR_A_2_fixture', 'SR_A_3_fixture']);
+  assert.equal(completed.refreshState.lastSuccessfulAt, today);
+  assert.equal((await runScheduledChunk({ ...options, sourceRefresh: true })).state, 'already_completed');
 });
 test('source failure and publish failure preserve the committed cursor and jobs for bounded retry', async t => {
   for (const failPublish of [false, true]) {

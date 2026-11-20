@@ -6,9 +6,13 @@ Completion was 2026-11-14 19:36:29 KST (`2026-11-14T10:36:29.401Z`), run `f151fd
 
 ## Daily schedule
 
-The existing `0 21 * * *` UTC Cron remains in the same Vercel project. `refresh/scheduled.js` never starts a national scan. It can only finish an already-started same-day baseline; after that it runs local D1 maintenance. No official-source requests are made by scheduled maintenance.
+Vercel Cron calls `/api/refresh` daily at `0 21 * * *` UTC. Scheduled maintenance updates D1 from the existing snapshot. It can resume a manual source collection already started on the same KST day.
 
 Maintenance removes expired or otherwise ineligible IDs from the active scope using inclusive KST application dates and raw accepting status. It preserves original rows, source observation times and the last successful source scan time. Duplicate same-day deliveries leave the snapshot unchanged. Preserved historical rows are not automatically reactivated.
+
+## Manual source refresh
+
+Send `GET /api/refresh` without an Authorization header to start or resume the official public-region collection. The response reports queue acceptance. Check MCP `observedAt`, `referenceDayKst` and refresh state to verify publication and completion. The worker advances source observation time after a successful page, keeps prior eligible postings available during collection, and narrows the active scope to source-verified IDs when collection completes.
 
 ## Required upstream contract
 

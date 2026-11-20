@@ -4,12 +4,13 @@ const { eligibility, kstDay } = require('../lib/jobs');
 const { digest, StoreFailure } = require('../lib/snapshot-store');
 
 async function runScheduledChunk(options) {
-  const { store, now = () => new Date(), schedulerEnabled = true } = options;
+  const { store, now = () => new Date(), schedulerEnabled = true, sourceRefresh = false } = options;
+  if (sourceRefresh) return runPublicChunk(options);
   const at = now().toISOString(), day = kstDay(now());
   const [current, control] = await Promise.all([store.readCurrent(), store.readControl()]);
   if (!current) throw new StoreFailure('D1_DATA_NOT_COLLECTED');
   const plan = current.value.runPlan;
-  // Only finish the explicitly started initial baseline; never start a daily national scan.
+  // Scheduled deliveries can resume a source refresh explicitly started today.
   if (plan?.kind === 'official_public' && plan.phase !== 'done' && plan.runDayKst === day) {
     return runPublicChunk(options);
   }

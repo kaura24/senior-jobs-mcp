@@ -33,7 +33,8 @@ Vercel Production requires:
 - `CLOUDFLARE_ACCOUNT_ID` = the account above.
 - `D1_DATABASE_ID` = the database above.
 - `D1_WORKER_URL` = `https://senior-jobs-mcp-storage.kaura24.workers.dev`.
-- Existing `CRON_SECRET` remains required. Public-source collection does not use `DATA_GO_KR_SERVICE_KEY`.
+
+The refresh endpoint accepts requests without an Authorization header. The official public source accepts requests without an API key.
 
 The deployed connection uses existing Vercel Production OIDC, verified by a Worker bound only to this D1. It needs no long-lived Cloudflare API token in Vercel. Do not copy a Wrangler OAuth access or refresh token into Vercel. See [D1-OIDC-BRIDGE.md](D1-OIDC-BRIDGE.md) for exact identity checks and the four allowed storage operations.
 

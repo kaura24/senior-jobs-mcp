@@ -9,7 +9,7 @@ const { isRefreshPaused, pausedResult } = require('../lib/refresh-policy');
 const errorCode = cause => /^[A-Z][A-Z0-9_]{1,80}$/.test(cause?.code || '') ? cause.code : 'STORAGE_UNAVAILABLE';
 async function executeChunk(day, { storeFactory = productionStore, chunk = runScheduledChunk,
   sourceFactory = () => publicSource, dispatch = enqueue, log = event => console.log(JSON.stringify(event)),
-  isPaused = isRefreshPaused } = {}) {
+  isPaused = isRefreshPaused, sourceRefresh = false } = {}) {
   if (isPaused()) {
     log({ event: 'refresh_paused', state: 'paused_by_request' });
     return pausedResult();
@@ -21,7 +21,7 @@ async function executeChunk(day, { storeFactory = productionStore, chunk = runSc
     store = await storeFactory();
     phase = 'chunk';
     const source = sourceFactory();
-    const result = await chunk({ store, source,
+    const result = await chunk({ store, source, sourceRefresh,
       schedulerEnabled: true, budgetMs: 20000, onEvent: log });
     log({ event: 'refresh_chunk', state: result.state, errorCode: result.errorCode || null,
       confirmedIds: result.progress?.confirmedIds, targetIds: result.progress?.targetIds, elapsedMs: Date.now() - started });

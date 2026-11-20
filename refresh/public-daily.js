@@ -27,11 +27,10 @@ async function runPublicChunk({ store, source = publicSource, now = () => new Da
       plan = { kind: 'official_public', runId: randomUUID(), runDayKst: day, startedAt: at, phase: 'collection',
         regions: discovered.regions, regionIndex: 0, nextPage: 1, pageSignatures: [], regionTotal: null, calls: 0,
         verifiedIds: [], counts: { new: 0, updated: 0, unchanged: 0, failed: 0, fetchedRows: 0, duplicates: 0, excluded: 0 } };
-      const initial = preparePublicImport({ source: 'https://www.seniorro.or.kr/noin/main.do', startedAt: at,
-        completedAt: now().toISOString(), postings: [], counts: {}, failures: [], regions: [] }, current).envelope;
-      initial.runPlan = plan;
-      initial.refreshState = { state: 'in_progress_partial', schedulerEnabled, lastAttemptAt: at, errorCode: null };
-      await store.writeCurrent(initial, current?.etag);
+      const initial = current?.value ?? preparePublicImport({ source: 'https://www.seniorro.or.kr/noin/main.do', startedAt: at,
+        completedAt: now().toISOString(), postings: [], counts: {}, failures: [], regions: [] }, null).envelope;
+      await store.writeCurrent({ ...initial, runPlan: plan,
+        refreshState: { ...initial.refreshState, state: 'in_progress_partial', schedulerEnabled, lastAttemptAt: at, errorCode: null } }, current?.etag);
       await store.writeControl({ ...lease, state: 'in_progress_partial', leaseUntil: null }, claim.etag);
       return { state: 'in_progress_partial', continue: true,
         progress: { sourceCalls: 0, phase: 'collection', attemptedIds: 0, totalRegions: plan.regions.length, completedRegions: 0 } };
@@ -77,12 +76,21 @@ async function runPublicChunk({ store, source = publicSource, now = () => new Da
     if (plan.regionIndex === plan.regions.length) plan.phase = 'done';
     const state = plan.phase !== 'done' ? 'in_progress_partial' : plan.counts.failed ? 'paused_incomplete' : 'public_collection_completed';
     const envelope = prepared.envelope, metadata = envelope.snapshot.metadata;
+    let queryableIds = plan.verifiedIds;
+    if (plan.phase !== 'done') {
+      const active = new Set(current.value.snapshot.metadata.refresh?.queryableIds || []);
+      for (const evidence of excludedEvidence) active.delete(evidence.jobId);
+      for (const id of verified) active.add(id);
+      queryableIds = [...active];
+    }
+    const lastSuccessfulAt = state === 'public_collection_completed' ? collection.completedAt : current.value.refreshState.lastSuccessfulAt;
+    if (metadata.syncPolicy && lastSuccessfulAt) metadata.syncPolicy.lastSuccessfulSourceScanAt = lastSuccessfulAt;
     metadata.collection = { source: collection.source, completedRegions: plan.regionIndex, totalRegions: plan.regions.length,
       counts: plan.counts, sourceCalls: plan.calls };
     metadata.refresh = { scanScope: 'official_public_region_search', latestStatusRevalidatedIds: plan.verifiedIds,
-      queryableIds: plan.verifiedIds, retainedNotRevalidated: envelope.snapshot.jobs.length - verified.size };
+      queryableIds, retainedNotRevalidated: envelope.snapshot.jobs.length - verified.size };
     envelope.refreshState = { state, schedulerEnabled, lastAttemptAt: at, lastPublishedAt: collection.completedAt,
-      lastSuccessfulAt: state === 'public_collection_completed' ? collection.completedAt : null,
+      lastSuccessfulAt: lastSuccessfulAt || null,
       errorCode: plan.counts.failed ? 'PUBLIC_INVALID_RECORDS' : null };
     envelope.runPlan = plan; envelope.sha256 = digest(envelope.snapshot);
     // Evidence is durable before a changed posting becomes visible; failed CAS leaves only audit history.
